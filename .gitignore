@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+.pnp/
+pnpm-lock.yaml
+package-lock.json
+
+# builds
+.expo/
+dist/
+build/
+web-build/
+.vercel/
+
+# env & secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# editors & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# misc
+*.log
+coverage/
