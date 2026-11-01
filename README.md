@@ -162,6 +162,8 @@ FSO (Field Sales Officer) MOBILE APP                    ASM (Area Sales Manager)
 └─────────────────────────────┘
 ```
 
+**Design source:** [Figma — VeloCity AI](https://www.figma.com/design/fc9sAJYGcAuPS7Oo7IJZ5T) — both pages (P01–P13 mobile, W01–W09 ASM cockpit) designed to match this map.
+
 | ID | Page | Role | Purpose |
 |----|------|------|---------|
 | P01 | Login & Onboarding | FSO | Auth, day-start checklist, sync health, offline notice |
