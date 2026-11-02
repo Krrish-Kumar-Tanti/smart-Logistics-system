@@ -1,0 +1,14 @@
+{
+  "name": "@velocity/simulation",
+  "version": "0.1.0",
+  "description": "Synthetic territory generator and mock ERP sync for VeloCity AI",
+  "type": "module",
+  "main": "./seed.ts",
+  "scripts": {
+    "seed": "node --experimental-strip-types seed.ts",
+    "mock-erp": "node --experimental-strip-types mock-erp-feed.ts"
+  },
+  "keywords": ["simulation", "fmcg", "loreal", "territory", "seed"],
+  "author": "Krrish Kumar Tanti",
+  "license": "MIT"
+}

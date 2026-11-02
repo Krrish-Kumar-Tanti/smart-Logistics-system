@@ -1,0 +1,20 @@
+{
+  "name": "velocity-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "VeloCity AI — Smart Reverse-Logistics & Sales Intelligence System (L'Oréal SUS 2026)",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --test services/risk-engine/test/*.test.ts",
+    "seed": "node --experimental-strip-types simulation/seed.ts",
+    "mock-erp": "node --experimental-strip-types simulation/mock-erp-feed.ts"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "services/*",
+    "simulation"
+  ],
+  "author": "Krrish Kumar Tanti",
+  "license": "MIT"
+}

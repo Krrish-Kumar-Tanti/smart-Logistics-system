@@ -1,0 +1,13 @@
+{
+  "name": "@velocity/risk-engine",
+  "version": "0.1.0",
+  "description": "Deterministic tri-band risk engine and NFI scoring for VeloCity AI",
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "keywords": ["velocity", "risk-engine", "tri-band", "fmcg", "fefo"],
+  "author": "Krrish Kumar Tanti",
+  "license": "MIT"
+}

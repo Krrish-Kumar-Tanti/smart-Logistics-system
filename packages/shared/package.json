@@ -1,0 +1,14 @@
+{
+  "name": "@velocity/shared",
+  "version": "0.1.0",
+  "description": "Shared TypeScript domain models and types for VeloCity AI",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["velocity", "logistics", "fmcg", "types"],
+  "author": "Krrish Kumar Tanti",
+  "license": "MIT"
+}
