@@ -75,6 +75,11 @@ test('calculateStoreFreshness — computes 100 for all green', () => {
   assert.equal(score, 100);
 });
 
+test('calculateStoreFreshness — returns 100 for empty inventory list', () => {
+  const score = calculateStoreFreshness([]);
+  assert.equal(score, 100);
+});
+
 test('calculateStoreFreshness — computes penalty for RED and AMBER', () => {
   // RED = 25, AMBER = 10, GREEN = 0 -> avg = (25 + 10 + 0 + 0) / 4 = 35 / 4 = 8.75 -> 100 - 8.75 = 91.25 -> rounded 91.3
   const score = calculateStoreFreshness(['RED', 'AMBER', 'GREEN', 'GREEN']);
@@ -92,6 +97,26 @@ test('calculateFsoNfi — computes NFI with rescue bonuses and skip penalties', 
 
   // 95 + 8 + 2.5 - 8 = 97.5
   assert.equal(nfi, 97.5);
+});
+
+test('calculateFsoNfi — clamps boundary between 0 and 100 on extreme penalties', () => {
+  const nfiZero = calculateFsoNfi({
+    totalSkusInTerritory: 10,
+    postVisitRedSkus: 10,
+    swapsCompleted: 0,
+    testerConversions: 0,
+    skippedStores: 20, // severe penalty
+  });
+  assert.equal(nfiZero, 0);
+
+  const nfiHundred = calculateFsoNfi({
+    totalSkusInTerritory: 0,
+    postVisitRedSkus: 0,
+    swapsCompleted: 10,
+    testerConversions: 10,
+    skippedStores: 0,
+  });
+  assert.equal(nfiHundred, 100);
 });
 
 test('haversineDistanceKm — calculates Mumbai store distances accurately', () => {
