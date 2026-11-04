@@ -50,3 +50,4 @@ The system is validated by an automated test suite verifying:
 - Tri-band risk classification and edge boundaries (DTE $\le$ 90d, stagnation $>$ 60d).
 - Net Freshness Index scoring and incentive math.
 - Geographical candidate filtering and velocity multipliers for stock rescue.
+

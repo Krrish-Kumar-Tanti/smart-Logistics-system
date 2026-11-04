@@ -8,7 +8,9 @@ Entry for **L'Oréal Sustainability Challenge (L'Oréal SUS) 2026** — Executiv
 
 [![Track](https://img.shields.io/badge/Track-Sales%20%26%20Commercial-000000)]()
 [![Approach](https://img.shields.io/badge/Approach-Tech--First%20Mobile%20App-C9A227)]()
-[![Status](https://img.shields.io/badge/Status-Phase%200%20Simulation%20%2B%20PoC-blue)]()
+[![Tests](https://img.shields.io/badge/Tests-21%20Passed-brightgreen)]()
+[![Presentation](https://img.shields.io/badge/Executive%20Deck-5%20Slides%20(HTML%20%2B%20PDF)-purple)](presentation/)
+[![Status](https://img.shields.io/badge/Status-Phase%201%20API%20%2B%20Risk%20Engine%20%2B%20Simulation-blue)]()
 
 </div>
 
@@ -447,20 +449,29 @@ Deliverables to the judges: demo video + slides + this repo as the "system actua
 ```
 smart-Logistics-system/
 ├── README.md                      ← this file (single source of truth for the system design)
-├── LICENSE                        ← MIT (to be added at first publish)
-├── docs/                          ← deep-dive docs beyond README (references, decisions)
-├── simulation/                    ← what we *simulate* (seed data, mock ERP, demo scripts)
-│   ├── seed.ts                    · synthetic 40-store territory generator
-│   ├── mock-erp-feed.ts           · nightly "SAP-like" CSV webhook
-│   └── demo-script.md             · 5-minute judge-demo runbook
-├── apps/
-│   ├── mobile/                    ← FSO app (Expo React Native, TypeScript)
-│   └── dashboard/                 ← ASM cockpit (React + Vite + Tailwind + Recharts)
+├── LICENSE                        ← MIT license
+├── presentation/                  ← Executive 5-Slide Pitch Deck (L'Oréal SUS 2026)
+│   ├── index.html                 · Standalone interactive HTML presentation deck
+│   ├── Loreal_VeloCity_AI_Presentation.pdf · High-DPI vector slide deck PDF
+│   ├── slides/                    · Rendered high-res PNG slide previews (Slides 1-5)
+│   ├── render_slides.cjs          · Puppeteer automated slide & PDF rendering pipeline
+│   └── README.md                  · Presentation architecture & slide breakdown
+├── docs/                          ← Case study analysis & deliverable deep-dives
+│   ├── deliverables-guide.md      · Comprehensive breakdown of Key Deliverables A & B
+│   ├── executive-summary.md       · One-page executive value proposition
+│   └── references.md              · Open source & industry benchmarks
+├── simulation/                    ← Territory simulation & synthetic data generator
+│   ├── seed.ts                    · Synthetic 40-store Mumbai territory generator
+│   ├── mock-erp-feed.ts           · Nightly SAP-like CSV webhook simulation
+│   └── data/                      · territory-snapshot.json & mock-sap-feed.csv
 ├── services/
-│   ├── api/                       ← Node/Express REST API + webhooks
-│   └── risk-engine/               ← tri-band rules + NFI scoring (pure functions, test-first)
+│   ├── api/                       ← Lightweight REST API Gateway (Node/TS native)
+│   └── risk-engine/               ← Pure Tri-Band rules + NFI scoring (21 unit tests)
+├── apps/
+│   ├── mobile/                    ← FSO field app (Expo React Native, TypeScript)
+│   └── dashboard/                 ← ASM regional cockpit (React + Vite + Tailwind)
 └── packages/
-    └── shared/                    ← shared TypeScript types (SKU, bands, ledger DTOs)
+    └── shared/                    ← Shared TypeScript models (SKU, bands, ledger DTOs)
 ```
 
 **Conventions:**
@@ -484,14 +495,21 @@ smart-Logistics-system/
 
 ## 17 · Running the Project
 
-*(populated as Phase 1 code lands — Phase 0 is docs + seed only)*
-
 ```bash
-# Simulation only (Phase 0)
-cd simulation && pnpm i && pnpm run seed          # generate synthetic territory
+# 1. Run all unit tests across risk-engine and API services (21 tests)
+npm test
 
-# ASM dashboard (Phase 1)
-cd apps/dashboard && pnpm i && pnpm dev           # → localhost:5173
+# 2. Run synthetic territory simulation (generates 40 Mumbai stores, 400 batches)
+npm run seed
+
+# 3. Start the VeloCity AI REST API Gateway (port 4000)
+cd services/api && npm start
+
+# 4. View or re-render executive presentation slides
+open presentation/index.html
+# Re-render PNGs & vector PDF via Puppeteer:
+cd presentation && node render_slides.cjs
+```
 
 # API (Phase 1)
 cd services/api && pnpm i && pnpm dev             # → localhost:4000

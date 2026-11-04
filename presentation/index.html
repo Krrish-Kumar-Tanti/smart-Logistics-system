@@ -1,0 +1,2254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Oréal VeloCity AI — Executive Presentation Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: 1920px 1080px;
+    margin: 0;
+  }
+  
+  :root {
+    --gold: #C5A059;
+    --gold-light: #F3E5C8;
+    --gold-dark: #8C6D2D;
+    --gold-bg: rgba(197, 160, 89, 0.12);
+    --gold-border: rgba(197, 160, 89, 0.4);
+    
+    --bg-dark: #070B12;
+    --card-dark: #0E1626;
+    --card-dark-subtle: #141E33;
+    --card-dark-border: rgba(255, 255, 255, 0.1);
+    
+    --bg-light: #F8FAFC;
+    --card-light: #FFFFFF;
+    --card-light-subtle: #F1F5F9;
+    --border-light: #E2E8F0;
+    
+    --text-primary-dark: #FFFFFF;
+    --text-secondary-dark: #94A3B8;
+    --text-muted-dark: #64748B;
+    
+    --text-primary-light: #0F172A;
+    --text-secondary-light: #334155;
+    --text-muted-light: #64748B;
+    
+    --green: #10B981;
+    --green-bg: rgba(16, 185, 129, 0.12);
+    --green-border: rgba(16, 185, 129, 0.35);
+    
+    --amber: #F59E0B;
+    --amber-bg: rgba(245, 158, 11, 0.12);
+    --amber-border: rgba(245, 158, 11, 0.35);
+    
+    --red: #EF4444;
+    --red-bg: rgba(239, 68, 68, 0.12);
+    --red-border: rgba(239, 68, 68, 0.35);
+    
+    --blue: #3B82F6;
+    --blue-bg: rgba(59, 130, 246, 0.12);
+    --blue-border: rgba(59, 130, 246, 0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #020408;
+    color: var(--text-primary-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 16:9 Widescreen Canvas */
+  .slide {
+    width: 1920px;
+    height: 1080px;
+    background: var(--bg-light);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    padding: 38px 56px 28px 56px;
+    page-break-after: always;
+    page-break-inside: avoid;
+    flex-shrink: 0;
+  }
+
+  .slide.dark {
+    background: var(--bg-dark);
+    color: var(--text-primary-dark);
+  }
+
+  /* Top L'Oréal Signature Gold Bar */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #8C6D2D 0%, #C5A059 35%, #F3E5C8 65%, #C5A059 100%);
+    z-index: 20;
+  }
+
+  /* Watermark Accent */
+  .slide::after {
+    content: "L'ORÉAL";
+    position: absolute;
+    bottom: 10px;
+    right: 56px;
+    font-size: 14px;
+    letter-spacing: 6px;
+    font-weight: 800;
+    color: rgba(140, 109, 45, 0.28);
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Standard Slide Header */
+  .slide-header {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .dark .slide-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .header-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: var(--gold-bg);
+    border: 1px solid var(--gold-border);
+    padding: 3px 10px;
+    border-radius: 6px;
+    width: fit-content;
+  }
+
+  .dark .header-pill {
+    color: var(--gold-light);
+    background: rgba(197, 160, 89, 0.15);
+    border-color: rgba(197, 160, 89, 0.4);
+  }
+
+  .slide-title {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-primary-light);
+    line-height: 1.15;
+  }
+
+  .dark .slide-title {
+    color: var(--text-primary-dark);
+  }
+
+  .slide-subtitle {
+    font-size: 13px;
+    color: var(--text-muted-light);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  .dark .slide-subtitle {
+    color: var(--text-secondary-dark);
+  }
+
+  .header-counter {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    padding: 5px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    background: var(--card-light);
+  }
+
+  .dark .header-counter {
+    color: var(--gold-light);
+    background: var(--card-dark-subtle);
+    border-color: var(--card-dark-border);
+  }
+
+  /* Badge Styles */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .badge.green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+  .badge.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+  .badge.red   { background: var(--red-bg);   color: var(--red);   border: 1px solid var(--red-border); }
+  .badge.gold  { background: var(--gold-bg);  color: var(--gold-dark); border: 1px solid var(--gold-border); }
+  .dark .badge.gold { color: var(--gold-light); }
+
+  /* ========================================================
+     SLIDE 1: COVER & EXECUTIVE ARCHITECTURE
+     ======================================================== */
+  .s1-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 940px;
+  }
+
+  .s1-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .s1-brand-tag {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .s1-brand-tag::after {
+    content: '';
+    width: 60px;
+    height: 1.5px;
+    background: var(--gold);
+  }
+
+  .s1-track-badge {
+    background: rgba(197, 160, 89, 0.12);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .s1-hero-box {
+    background: linear-gradient(135deg, rgba(20, 30, 50, 0.85) 0%, rgba(10, 15, 26, 0.98) 100%);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 14px;
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .s1-main-title {
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: #FFFFFF;
+  }
+
+  .s1-main-title span {
+    background: linear-gradient(135deg, #F3E5C8 0%, #C5A059 50%, #E8C882 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .s1-tagline {
+    font-size: 21px;
+    font-weight: 700;
+    color: #E2E8F0;
+    line-height: 1.25;
+  }
+
+  .s1-desc {
+    font-size: 14px;
+    color: #94A3B8;
+    line-height: 1.5;
+    margin-top: 4px;
+  }
+
+  .s1-pillars-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .s1-pillar-card {
+    background: var(--card-dark-subtle);
+    border: 1px solid var(--card-dark-border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .s1-pillar-badge {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .s1-pillar-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .s1-pillar-desc {
+    font-size: 12px;
+    color: #94A3B8;
+    line-height: 1.45;
+  }
+
+  .s1-diagram-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .s1-diagram-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .s1-flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 36px 1fr 36px 1fr 36px 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .s1-flow-step {
+    background: var(--card-dark-subtle);
+    border: 1px solid var(--card-dark-border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .s1-flow-step.highlight {
+    border-color: rgba(197, 160, 89, 0.5);
+    background: rgba(197, 160, 89, 0.08);
+  }
+
+  .s1-step-badge {
+    font-size: 9.5px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .s1-step-title {
+    font-size: 14px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .s1-step-desc {
+    font-size: 11px;
+    color: #94A3B8;
+    line-height: 1.35;
+  }
+
+  .s1-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold);
+  }
+
+  .s1-metric-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .s1-metric-card {
+    background: rgba(15, 23, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .s1-metric-val {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .s1-metric-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #94A3B8;
+    line-height: 1.35;
+  }
+
+  /* ========================================================
+     SLIDE 2: CONTEXT, PROBLEM & DETECTION
+     ======================================================== */
+  .s2-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 940px;
+    justify-content: space-between;
+  }
+
+  .s2-main-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .s2-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .s2-leakage-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .s2-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .s2-card-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text-primary-light);
+  }
+
+  .waterfall-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .waterfall-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .waterfall-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-secondary-light);
+  }
+
+  .waterfall-bar-track {
+    width: 100%;
+    height: 10px;
+    background: #E2E8F0;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .waterfall-bar-fill {
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .flow-comparison-card {
+    background: #F8FAFC;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+  }
+  .flow-comp-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .flow-comp-pill {
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+
+  .friction-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .friction-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+    font-size: 11.5px;
+  }
+
+  .friction-table th {
+    background: #F1F5F9;
+    padding: 8px 12px;
+    font-weight: 800;
+    text-align: left;
+    color: var(--text-secondary-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .friction-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #F1F5F9;
+    color: var(--text-secondary-light);
+    vertical-align: top;
+    line-height: 1.35;
+  }
+
+  .friction-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .s2-col-right {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .detection-step-card {
+    background: #F8FAFC;
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .detection-num {
+    background: var(--gold-bg);
+    color: var(--gold-dark);
+    font-size: 12px;
+    font-weight: 900;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .detection-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .detection-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--text-primary-light);
+  }
+
+  .detection-desc {
+    font-size: 11px;
+    color: var(--text-secondary-light);
+    line-height: 1.35;
+  }
+
+  .detection-metric-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--gold-dark);
+  }
+
+  /* Full-width 180s audit journey footer */
+  .s2-bottom-banner {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .audit-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    text-align: center;
+  }
+
+  .audit-step-chip {
+    background: #F8FAFC;
+    border: 1px solid var(--border-light);
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 10.5px;
+  }
+  .audit-step-chip strong { color: var(--text-primary-light); font-size: 11.5px; }
+  .audit-step-chip span { color: var(--gold-dark); font-weight: 700; font-size: 10px; }
+
+  /* ========================================================
+     SLIDE 3: TECH ARCHITECTURE & 3-SEC EDGE-CV
+     ======================================================== */
+  .s3-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 940px;
+    justify-content: space-between;
+  }
+
+  .s3-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .s3-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .pipeline-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pipeline-step-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .pipeline-step-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .pipeline-step-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .tech-specs-bar {
+    background: #F1F5F9;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-secondary-light);
+  }
+  .tech-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .tech-spec-item strong {
+    color: var(--text-primary-light);
+    font-size: 11.5px;
+  }
+
+  .triband-matrix-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .triband-row {
+    display: grid;
+    grid-template-columns: 1.15fr 1.25fr 0.9fr;
+    padding: 10px 12px;
+    border-radius: 8px;
+    align-items: center;
+    font-size: 11.5px;
+  }
+  .triband-row.green { background: var(--green-bg); border: 1px solid var(--green-border); }
+  .triband-row.amber { background: var(--amber-bg); border: 1px solid var(--amber-border); }
+  .triband-row.red   { background: var(--red-bg);   border: 1px solid var(--red-border); }
+
+  .device-mockup-card {
+    background: #0B1120;
+    border: 2px solid rgba(197, 160, 89, 0.45);
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    color: #FFFFFF;
+  }
+
+  .app-status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #94A3B8;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 6px;
+  }
+
+  .app-store-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 0;
+  }
+
+  .app-store-name {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .app-store-meta {
+    font-size: 10.5px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .ar-viewfinder {
+    background: #020617;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+  }
+
+  .ar-grid-lines {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 1px, transparent 1px);
+    background-size: 16px 16px;
+    pointer-events: none;
+    border-radius: 10px;
+  }
+
+  .ar-detection-box {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1.5px solid;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    font-size: 11px;
+  }
+  .ar-detection-box.green { border-color: var(--green); }
+  .ar-detection-box.amber { border-color: var(--amber); }
+  .ar-detection-box.red   { border-color: var(--red); box-shadow: 0 0 12px rgba(239, 68, 68, 0.25); }
+
+  .ar-sku-title { font-weight: 700; color: #FFFFFF; }
+  .ar-sku-sub { font-size: 9.5px; color: #94A3B8; }
+
+  .app-telemetry-strip {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    font-size: 10.5px;
+    text-align: center;
+  }
+  .telemetry-item strong { color: var(--gold-light); display: block; font-size: 12.5px; }
+  .telemetry-item span { color: #94A3B8; font-size: 9.5px; }
+
+  .app-action-sheet {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .app-action-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .app-action-body {
+    font-size: 10.5px;
+    color: #CBD5E1;
+    line-height: 1.35;
+  }
+
+  .app-btn-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .app-btn-primary {
+    flex: 1.2;
+    background: linear-gradient(135deg, #C5A059 0%, #8C6D2D 100%);
+    color: #FFFFFF;
+    font-size: 10.5px;
+    font-weight: 800;
+    text-align: center;
+    padding: 7px 10px;
+    border-radius: 6px;
+  }
+
+  .app-btn-secondary {
+    flex: 0.8;
+    background: rgba(255, 255, 255, 0.1);
+    color: #E2E8F0;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-align: center;
+    padding: 7px 10px;
+    border-radius: 6px;
+  }
+
+  /* Bottom Telemetry Sync Pipeline */
+  .s3-bottom-strip {
+    background: #0B1120;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #CBD5E1;
+  }
+
+  /* ========================================================
+     SLIDE 4: ON-GROUND INTERVENTIONS & CIRCULAR SWAP
+     ======================================================== */
+  .s4-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 940px;
+    justify-content: space-between;
+  }
+
+  .s4-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .s4-playbooks-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .playbook-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    justify-content: space-between;
+  }
+
+  .playbook-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #F1F5F9;
+  }
+
+  .playbook-title {
+    font-size: 13.5px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .playbook-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .playbook-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: var(--text-secondary-light);
+  }
+
+  .playbook-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .playbook-subbox {
+    background: #F8FAFC;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    font-size: 10.5px;
+    border: 1px solid #E2E8F0;
+  }
+  .playbook-subbox strong { color: var(--text-primary-light); display: block; font-size: 11px; }
+
+  .swap-diagram-card {
+    background: var(--card-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: space-between;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .swap-flow-visual {
+    background: #F8FAFC;
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: 1fr 44px 1.15fr 44px 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .swap-node {
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .swap-node.donor { border-top: 3px solid var(--red); }
+  .swap-node.engine { border: 1.5px solid var(--gold); background: #FFFDF9; }
+  .swap-node.recipient { border-top: 3px solid var(--green); }
+
+  .swap-node-title { font-size: 12px; font-weight: 800; color: var(--text-primary-light); }
+  .swap-node-desc { font-size: 10.5px; color: var(--text-secondary-light); line-height: 1.35; }
+
+  .swap-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-dark);
+    font-size: 10.5px;
+    font-weight: 800;
+  }
+
+  .match-rules-box {
+    background: #F1F5F9;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text-secondary-light);
+  }
+  .rule-item strong { color: var(--text-primary-light); display: block; margin-bottom: 2px; }
+
+  .financial-savings-box {
+    background: var(--card-light-subtle);
+    border: 1px dashed var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    font-size: 11px;
+    text-align: center;
+  }
+  .savings-item strong { color: var(--text-primary-light); font-size: 13px; display: block; }
+  .savings-item span { color: var(--text-muted-light); font-size: 10px; }
+
+  .s4-bottom-strip {
+    background: var(--card-dark);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 12px;
+    padding: 14px 28px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+  }
+
+  .strip-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 14px;
+  }
+  .strip-item:last-child { border-right: none; }
+
+  .strip-val {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1.1;
+  }
+
+  .strip-label {
+    font-size: 11px;
+    color: #94A3B8;
+    line-height: 1.35;
+    font-weight: 500;
+  }
+
+  /* ========================================================
+     SLIDE 5: ROADMAP, GOVERNANCE & NFI GAMIFICATION
+     ======================================================== */
+  .s5-container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 940px;
+    justify-content: space-between;
+  }
+
+  .timeline-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .timeline-phase {
+    background: var(--card-dark-subtle);
+    border: 1px solid var(--card-dark-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .timeline-phase.highlight {
+    border-color: rgba(197, 160, 89, 0.45);
+    background: rgba(197, 160, 89, 0.08);
+  }
+
+  .timeline-phase-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .timeline-phase-title {
+    font-size: 14.5px;
+    font-weight: 800;
+    color: #FFFFFF;
+  }
+
+  .timeline-phase-desc {
+    font-size: 11px;
+    color: #94A3B8;
+    line-height: 1.4;
+  }
+
+  .s5-bottom-split {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    flex: 1;
+  }
+
+  .nfi-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .nfi-formula-box {
+    background: var(--card-dark-subtle);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+
+  .nfi-mechanics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    font-size: 10.5px;
+  }
+
+  .nfi-mech-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    padding: 7px 9px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nfi-mech-item strong { color: #FFFFFF; }
+  .nfi-mech-item span { color: #94A3B8; }
+
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 11px;
+  }
+  .leaderboard-table th {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 10px;
+    color: var(--gold);
+    font-weight: 800;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  .leaderboard-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    color: #E2E8F0;
+  }
+  .leaderboard-table tr:last-child td { border-bottom: none; }
+
+  .gov-card {
+    background: var(--card-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  .gov-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    font-size: 11px;
+    color: #CBD5E1;
+  }
+
+  .gov-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .gov-item svg { flex-shrink: 0; margin-top: 2px; }
+
+  .epr-kpi-row {
+    background: rgba(197, 160, 89, 0.06);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 8px;
+    padding: 7px 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    text-align: center;
+    font-size: 10.5px;
+  }
+  .epr-kpi-item strong { color: var(--gold-light); display: block; font-size: 12px; }
+  .epr-kpi-item span { color: #94A3B8; font-size: 9.5px; }
+
+  .risk-mitigation-grid {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    padding: 7px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 10px;
+    color: #94A3B8;
+  }
+  .risk-mitigation-grid strong { color: #FFFFFF; }
+
+  .team-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: #94A3B8;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================================
+     SLIDE 1: COVER & EXECUTIVE ARCHITECTURE
+     ======================================================== -->
+<div class="slide dark" id="slide-1">
+  <div class="s1-content">
+    <div class="s1-top-row">
+      <div class="s1-brand-tag">L'ORÉAL FOR THE FUTURE • 2026</div>
+      <div class="s1-track-badge">SALES &amp; COMMERCIAL TRACK • EXECUTIVE CASE SUBMISSION</div>
+    </div>
+
+    <div class="s1-hero-box">
+      <h1 class="s1-main-title">L’ORÉAL <span>VeloCity AI</span></h1>
+      <div class="s1-tagline">Selling Smarter: An Autonomous, Circular Sales Engine Turning Channel Decay into Protected Margin</div>
+      <p class="s1-desc">
+        A mobile-first edge AI architecture empowering 1,200+ on-ground Field Sales Officers (FSOs) to eliminate the 2.5% revenue bleed caused by expired, damaged, and stagnant beauty stock through 3-second shelf CV scans, predictive decay telemetry, and lateral B2B salon redistribution before inventory becomes landfill waste.
+      </p>
+    </div>
+
+    <div class="s1-pillars-row">
+      <div class="s1-pillar-card">
+        <span class="s1-pillar-badge">PILLAR 01 • SENSING</span>
+        <div class="s1-pillar-title">3-Sec Edge-CV Shelf Audit</div>
+        <div class="s1-pillar-desc">On-device vision model (YOLOv8n) instantly quantifies shelf dust thickness, pack UV discoloration, and OCR batch expiry.</div>
+      </div>
+      <div class="s1-pillar-card">
+        <span class="s1-pillar-badge">PILLAR 02 • INTELLIGENCE</span>
+        <div class="s1-pillar-title">Deterministic Tri-Band Engine</div>
+        <div class="s1-pillar-desc">Automated inventory stratification: Green (Replenish), Amber (B2B Bundles), and Red (&lt; 90d Expiry Immediate Swap).</div>
+      </div>
+      <div class="s1-pillar-card">
+        <span class="s1-pillar-badge">PILLAR 03 • CIRCULARITY</span>
+        <div class="s1-pillar-title">Hyperlocal B2B StockSwap</div>
+        <div class="s1-pillar-desc">Algorithmic lateral relocation to high-velocity professional salons within 3 km, zeroing central reverse freight.</div>
+      </div>
+    </div>
+
+    <div class="s1-diagram-card">
+      <div class="s1-diagram-header">
+        <span>CORE OPERATING ARCHITECTURE: FROM FORWARD PUSH TO CIRCULAR OFFTAKE</span>
+        <span style="color: #94A3B8; font-size: 10.5px; letter-spacing: 1px;">INTEGRATED WITH DISTRIBUTOR DMS &amp; SAP S/4HANA</span>
+      </div>
+
+      <div class="s1-flow-grid">
+        <div class="s1-flow-step">
+          <span class="s1-step-badge">STAGE 01 • IN-STORE</span>
+          <div class="s1-step-title">Edge-CV Scan</div>
+          <div class="s1-step-desc">FSO smartphone captures panoramic shelf audit &amp; batch numbers in 3 seconds.</div>
+        </div>
+
+        <div class="s1-arrow">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="s1-flow-step highlight">
+          <span class="s1-step-badge">STAGE 02 • THE BRAIN</span>
+          <div class="s1-step-title">Tri-Band Engine</div>
+          <div class="s1-step-desc">Classifies DOI &amp; expiry: 🟢 Green, 🟡 Amber (&gt; 42d), 🔴 Red (&lt; 90d).</div>
+        </div>
+
+        <div class="s1-arrow">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="s1-flow-step">
+          <span class="s1-step-badge">STAGE 03 • OFFTAKE</span>
+          <div class="s1-step-title">Lateral StockSwap</div>
+          <div class="s1-step-desc">Hyperlocal matchmaker dispatches stock to nearby salon doors within 3 km.</div>
+        </div>
+
+        <div class="s1-arrow">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+
+        <div class="s1-flow-step">
+          <span class="s1-step-badge">STAGE 04 • GOVERNANCE</span>
+          <div class="s1-step-title">Zero-Landfill Ledger</div>
+          <div class="s1-step-desc">Instant DMS credit notes, tester conversions &amp; gamified FSO Net Freshness bonuses.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s1-metric-row">
+      <div class="s1-metric-card">
+        <div class="s1-metric-val">₹42 Cr+</div>
+        <div class="s1-metric-label">Annualized Protected<br>EBITDA Margin</div>
+      </div>
+      <div class="s1-metric-card">
+        <div class="s1-metric-val">60% Cut</div>
+        <div class="s1-metric-label">In Reverse Logistics<br>&amp; Destruction Costs</div>
+      </div>
+      <div class="s1-metric-card">
+        <div class="s1-metric-val">120 MT</div>
+        <div class="s1-metric-label">Plastic Packaging Diverted<br>From Regional Landfills</div>
+      </div>
+      <div class="s1-metric-card">
+        <div class="s1-metric-val">94 / 100</div>
+        <div class="s1-metric-label">Territory Net Freshness<br>Score (Up from 62)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     SLIDE 2: PROBLEM FRAMING & EARLY DETECTION SIGNALS
+     ======================================================== -->
+<div class="slide" id="slide-2">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="header-pill">SLIDE 1 OF 3 • CONTEXT, PROBLEM &amp; DETECTION</div>
+      <h2 class="slide-title">The 2.5% Blindspot: Why Traditional FMCG Sales Bleed Downstream</h2>
+      <div class="slide-subtitle">Unpacking the structural drivers of channel decay across General Trade, Modern Trade, and Salons (Deliverable A)</div>
+    </div>
+    <div class="header-counter">PROBLEM &amp; STRATEGY</div>
+  </div>
+
+  <div class="s2-container">
+    <div class="s2-main-grid">
+      <!-- Left Column: Waterfall + Comparison + Friction Table -->
+      <div class="s2-col-left">
+        <div class="s2-leakage-card">
+          <div class="s2-card-header">
+            <span class="s2-card-title">Anatomy of the 2.5% Revenue Bleed</span>
+            <span class="badge red">P&amp;L DRAIN</span>
+          </div>
+
+          <div class="waterfall-box">
+            <div class="waterfall-item">
+              <div class="waterfall-header">
+                <span>Delivered &amp; Consumed Revenue (Healthy Turnover)</span>
+                <strong>97.5% (₹1,950 Cr)</strong>
+              </div>
+              <div class="waterfall-bar-track">
+                <div class="waterfall-bar-fill" style="width: 97.5%; background: #0F172A;"></div>
+              </div>
+            </div>
+
+            <div class="waterfall-item">
+              <div class="waterfall-header" style="color: var(--red);">
+                <span>Direct Write-Offs (Returns / Expiry / Damage)</span>
+                <strong>~1.5% (₹30 Cr)</strong>
+              </div>
+              <div class="waterfall-bar-track">
+                <div class="waterfall-bar-fill" style="width: 1.5%; background: var(--red);"></div>
+              </div>
+            </div>
+
+            <div class="waterfall-item">
+              <div class="waterfall-header" style="color: var(--amber);">
+                <span>Reverse Freight, Central Handling &amp; Incineration</span>
+                <strong>~1.0% (₹20 Cr)</strong>
+              </div>
+              <div class="waterfall-bar-track">
+                <div class="waterfall-bar-fill" style="width: 1.0%; background: var(--amber);"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-comparison-card">
+            <div class="flow-comp-row">
+              <span class="flow-comp-pill badge red">Legacy Forward Bleed</span>
+              <span>Depot → Primary Booking → Shelf Dust (60d) → Central Depot Return → Landfill/Burn (₹50 Cr Drain)</span>
+            </div>
+            <div class="flow-comp-row" style="margin-top: 2px;">
+              <span class="flow-comp-pill badge green">VeloCity Circular Loop</span>
+              <span>Depot → CV Shelf Scan (30d) → Hyperlocal Lateral Swap (&lt; 3km) → Full Value Salvage (+₹42 Cr Margin)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="friction-card">
+          <div class="s2-card-header">
+            <span class="s2-card-title">Friction Point Breakdown: Legacy vs. VeloCity AI</span>
+            <span class="badge gold">OPERATIONAL MODEL</span>
+          </div>
+
+          <table class="friction-table">
+            <thead>
+              <tr>
+                <th style="width: 25%;">Friction Point</th>
+                <th style="width: 37%;">Legacy SFA ("Push &amp; Pray")</th>
+                <th style="width: 38%;">VeloCity AI Operating Model</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Incentive Model</strong></td>
+                <td>100% quota on gross order volume; zero penalty for downstream decay.</td>
+                <td><strong>Net Freshness Index (NFI):</strong> 20% bonus tied to velocity and zero write-offs.</td>
+              </tr>
+              <tr>
+                <td><strong>Shelf Visibility</strong></td>
+                <td>Blind order-taking. Back-room dust and ageing stock ignored until return.</td>
+                <td><strong>3-Sec Edge-CV:</strong> Auto-flags dust density, carton scuffs, and batch expiry.</td>
+              </tr>
+              <tr>
+                <td><strong>Stagnant Stock</strong></td>
+                <td>Reaction is to slash orders, triggering stock-outs on hero SKUs.</td>
+                <td><strong>B2B Dynamic Bundling:</strong> Margin-optimized combos move Amber items.</td>
+              </tr>
+              <tr>
+                <td><strong>Near-Expiry End</strong></td>
+                <td>Depot return → central warehouse → destructive incineration.</td>
+                <td><strong>Lateral StockSwap:</strong> Algorithmic transfer to nearby high-velocity doors.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Right Column: Early Detection Signal Matrix -->
+      <div class="s2-col-right">
+        <div class="s2-card-header">
+          <span class="s2-card-title">Early Detection Signal Architecture (Deliverable A)</span>
+          <span class="badge gold">FIELD PROTOCOL</span>
+        </div>
+
+        <div class="detection-step-card">
+          <div class="detection-num">01</div>
+          <div class="detection-body">
+            <div class="detection-title">Optical Dust Layer &amp; UV Fading Density</div>
+            <div class="detection-desc">Edge computer vision measures pixel luminance variation and carton micro-scuffs. Dust layer &gt; 15 microns indicates &gt; 45 days untouched shelf dwell time.</div>
+            <div class="detection-metric-tag">Trigger: Amber Warning flagged to FSO &amp; Retailer instantly</div>
+          </div>
+        </div>
+
+        <div class="detection-step-card">
+          <div class="detection-num">02</div>
+          <div class="detection-body">
+            <div class="detection-title">Secondary Carton Deformation &amp; Seal Wear</div>
+            <div class="detection-desc">Identifies repeated customer handling without conversion (e.g. lipstick testers or hair treatment cartons opened, corner dog-ears, faded labels).</div>
+            <div class="detection-metric-tag">Trigger: Recommendation for 1-tap Salon Tester Conversion</div>
+          </div>
+        </div>
+
+        <div class="detection-step-card">
+          <div class="detection-num">03</div>
+          <div class="detection-body">
+            <div class="detection-title">Planogram Dwell &amp; Displacement Drift</div>
+            <div class="detection-desc">Detects when retailers push slow shades to bottom racks or behind hero products. System measures spatial coordinate shift vs. approved planogram.</div>
+            <div class="detection-metric-tag">Trigger: Guided AR re-anchoring to eye-level Golden Zone (1.2m)</div>
+          </div>
+        </div>
+
+        <div class="detection-step-card">
+          <div class="detection-num">04</div>
+          <div class="detection-body">
+            <div class="detection-title">Retailer Credit Drag &amp; Velocity Delinquency</div>
+            <div class="detection-desc">Cross-references retailer payment hesitation with Days-of-Inventory (DOI &gt; 42 days). Catches stagnant batches before the retailer demands a credit return.</div>
+            <div class="detection-metric-tag">Trigger: Automated B2B Margin Bundle injection in distributor cart</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-Width Bottom Banner: 180s Field Audit Protocol -->
+    <div class="s2-bottom-banner">
+      <div style="font-size: 11.5px; font-weight: 800; color: var(--text-primary-light); display: flex; justify-content: space-between;">
+        <span>180-SECOND IN-STORE FSO AUDIT PROTOCOL &amp; ESCALATION WORKFLOW</span>
+        <span style="color: var(--gold-dark);">FIELD-TESTED OPERATIONAL PROCESS</span>
+      </div>
+      <div class="audit-steps-grid">
+        <div class="audit-step-chip">
+          <strong>1. Store Check-In</strong>
+          <span>GPS Geofence Verified (15s)</span>
+        </div>
+        <div class="audit-step-chip">
+          <strong>2. Shelf Sweep</strong>
+          <span>Panoramic CV Capture (30s)</span>
+        </div>
+        <div class="audit-step-chip">
+          <strong>3. Edge Inference</strong>
+          <span>Bounding Box &amp; OCR (45s)</span>
+        </div>
+        <div class="audit-step-chip">
+          <strong>4. Action Dispatch</strong>
+          <span>Swap / Bundle Approval (60s)</span>
+        </div>
+        <div class="audit-step-chip">
+          <strong>5. DMS Sync</strong>
+          <span>Auto Credit Note (30s)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     SLIDE 3: TECH ARCHITECTURE & 3-SEC EDGE-CV
+     ======================================================== -->
+<div class="slide" id="slide-3">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="header-pill">SLIDE 2 OF 3 • TECHNOLOGY ARCHITECTURE &amp; DETECTION</div>
+      <h2 class="slide-title">L’Oréal VeloCity AI: 3-Second Edge-CV Shelf Audit &amp; Triage Engine</h2>
+      <div class="slide-subtitle">Autonomous on-ground detection pipeline running locally on the field sales representative's smartphone (Deliverables A &amp; B)</div>
+    </div>
+    <div class="header-counter">AI &amp; EDGE ARCHITECTURE</div>
+  </div>
+
+  <div class="s3-container">
+    <div class="s3-grid">
+      <!-- Left Column: Pipeline + Specs + Thresholds -->
+      <div class="s3-left-col">
+        <div class="pipeline-card">
+          <div class="s2-card-header">
+            <span class="s2-card-title">Edge-AI Detection Pipeline</span>
+            <span class="badge gold">OFFLINE-FIRST ON DEVICE</span>
+          </div>
+
+          <div class="pipeline-step-item">
+            <div class="pipeline-step-icon" style="background: var(--gold-bg); color: var(--gold-dark);">1</div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 13px; font-weight: 800; color: var(--text-primary-light);">3-Second Panoramic Shelf Scan</div>
+              <div style="font-size: 11px; color: var(--text-secondary-light); line-height: 1.35;">
+                FSO performs a single continuous camera sweep. A quantized on-device YOLOv8-nano model operates at 30 fps to segment facing counts, verify planogram alignment, and compute dust reflectivity score.
+              </div>
+            </div>
+          </div>
+
+          <div class="pipeline-step-item">
+            <div class="pipeline-step-icon" style="background: var(--blue-bg); color: var(--blue);">2</div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 13px; font-weight: 800; color: var(--text-primary-light);">OCR Batch &amp; Expiry Harvester</div>
+              <div style="font-size: 11px; color: var(--text-secondary-light); line-height: 1.35;">
+                Integrated computer vision OCR extracts batch numbers, manufacturing dates, and lot stamps directly from secondary cartons or shelf tags, calculating exact Days-to-Expiry (DTE) with zero manual input.
+              </div>
+            </div>
+          </div>
+
+          <div class="pipeline-step-item">
+            <div class="pipeline-step-icon" style="background: var(--green-bg); color: var(--green);">3</div>
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+              <div style="font-size: 13px; font-weight: 800; color: var(--text-primary-light);">Deterministic Tri-Band Triage</div>
+              <div style="font-size: 11px; color: var(--text-secondary-light); line-height: 1.35;">
+                Synthesizes store-level offtake velocity with regional distributor billing to classify every single SKU into three deterministic operational risk bands with prescribed action protocols.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-specs-bar">
+          <div class="tech-spec-item">
+            <span>Vision Model</span>
+            <strong>YOLOv8n-int8 (4.2 MB)</strong>
+          </div>
+          <div class="tech-spec-item">
+            <span>Inference Speed</span>
+            <strong>85 ms (On-Device NPU)</strong>
+          </div>
+          <div class="tech-spec-item">
+            <span>OCR Accuracy</span>
+            <strong>99.2% (GS1 Standard)</strong>
+          </div>
+          <div class="tech-spec-item">
+            <span>Edge Database</span>
+            <strong>100% Offline SQLite</strong>
+          </div>
+        </div>
+
+        <div class="triband-matrix-card">
+          <div class="s2-card-header">
+            <span class="s2-card-title">Tri-Band Threshold &amp; Protocol Matrix</span>
+            <span class="badge gold">DECISION TREE</span>
+          </div>
+
+          <div class="triband-row green">
+            <span style="font-weight: 800; color: var(--green);">🟢 Green Band (Fast Velocity)</span>
+            <span style="font-weight: 600; color: var(--text-secondary-light);">Standard Replenishment Order Cycle</span>
+            <span style="font-weight: 800; text-align: right; color: var(--green);">&gt; 180d Remaining (DOI &le; 21d)</span>
+          </div>
+
+          <div class="triband-row amber">
+            <span style="font-weight: 800; color: var(--amber);">🟡 Amber Band (Slow-Moving)</span>
+            <span style="font-weight: 600; color: var(--text-secondary-light);">Planogram Re-anchoring &amp; B2B Bundling</span>
+            <span style="font-weight: 800; text-align: right; color: var(--amber);">60–180d Shelf Life (DOI &gt; 42d)</span>
+          </div>
+
+          <div class="triband-row red">
+            <span style="font-weight: 800; color: var(--red);">🔴 Red Band (Critical Expiry)</span>
+            <span style="font-weight: 600; color: var(--text-secondary-light);">Hyperlocal StockSwap / Tester Conversion</span>
+            <span style="font-weight: 800; text-align: right; color: var(--red);">&le; 90d to Expiry (or &gt; 60d Stagnant)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Interactive Mobile App Interface -->
+      <div class="device-mockup-card">
+        <div class="app-status-bar">
+          <span>📶 5G OFFLINE-READY • BEAT ROUTE #4</span>
+          <span>VELOCITY AI v2.4 • FSO SUITE</span>
+          <span>10:42 AM • BATTERY 88%</span>
+        </div>
+
+        <div class="app-store-header">
+          <div>
+            <div class="app-store-name">Gupta Beauty Corner (GT Door #104)</div>
+            <div class="app-store-meta">Bandra West, Mumbai • Store Freshness: 72/100 (Needs Attention)</div>
+          </div>
+          <span class="badge amber">AUDIT IN PROGRESS</span>
+        </div>
+
+        <div class="ar-viewfinder">
+          <div class="ar-grid-lines"></div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+            <span style="font-size: 10px; font-weight: 800; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase;">
+              AR CAMERA VIEWFINDER • 3 SKUs AUDITED
+            </span>
+            <span style="font-size: 10px; color: #94A3B8;">FPS: 30 • CONFIDENCE: 98.4%</span>
+          </div>
+
+          <!-- SKU 1: Green -->
+          <div class="ar-detection-box green">
+            <div>
+              <div class="ar-sku-title">Maybelline Colossal Kajal (Black)</div>
+              <div class="ar-sku-sub">Batch #MK-4402 • DTE: 420d • Velocity: 2.8 units/day</div>
+            </div>
+            <span class="badge green">GREEN • REORDER +24</span>
+          </div>
+
+          <!-- SKU 2: Amber -->
+          <div class="ar-detection-box amber">
+            <div>
+              <div class="ar-sku-title">Garnier Bright Complete Vitamin C Serum</div>
+              <div class="ar-sku-sub">Batch #GC-1198 • DTE: 140d • Velocity: 0.3 units/day (DOI: 58d)</div>
+            </div>
+            <span class="badge amber">AMBER • BUNDLE</span>
+          </div>
+
+          <!-- SKU 3: Red Alert -->
+          <div class="ar-detection-box red">
+            <div>
+              <div class="ar-sku-title">L’Oréal Paris Hyaluronic Acid Serum (30ml)</div>
+              <div class="ar-sku-sub">Batch #HY-902 • DTE: 68d (Critical) • Dwell Time: 72d Unsold</div>
+            </div>
+            <span class="badge red">RED • 12 UNITS AT RISK</span>
+          </div>
+        </div>
+
+        <div class="app-telemetry-strip">
+          <div class="telemetry-item">
+            <strong>42 SKUs</strong>
+            <span>Total Store Inventory</span>
+          </div>
+          <div class="telemetry-item">
+            <strong style="color: var(--red);">12 Units</strong>
+            <span>Critical Red Stock</span>
+          </div>
+          <div class="telemetry-item">
+            <strong>₹14,400</strong>
+            <span>At-Risk Inventory Value</span>
+          </div>
+          <div class="telemetry-item">
+            <strong style="color: var(--green);">+₹480</strong>
+            <span>FSO Freshness Bounty</span>
+          </div>
+        </div>
+
+        <div class="app-action-sheet">
+          <div class="app-action-title">
+            <span>⚡ AUTOMATED RESCUE DISPATCH TRIGGERED</span>
+            <span style="color: var(--gold);">98% MATCH FOUND</span>
+          </div>
+          <div class="app-action-body">
+            <strong>Looks Salon Bandra (1.2 km away)</strong> has high service offtake (2.4 units/day) for Hyaluronic Serum. Transferring 12 units prevents ₹14,400 write-off and earns ₹480 FSO Freshness Bounty.
+          </div>
+          <div class="app-btn-row">
+            <div class="app-btn-primary">✓ Execute 1-Tap Lateral StockSwap</div>
+            <div class="app-btn-secondary">Convert 1 Unit to Tester</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full-Width Bottom Strip: Data Pipeline -->
+    <div class="s3-bottom-strip">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="badge gold">END-TO-END TELEMETRY</span>
+        <strong>Continuous Edge Synchronization:</strong>
+      </div>
+      <div>Camera Viewfinder (30 fps) → On-Device NPU (YOLOv8n-int8) → Local SQLite Ledger → MQTT Sync → SAP S/4HANA DMS</div>
+      <div style="color: var(--green); font-weight: 700;">● ZERO CLOUD LATENCY</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     SLIDE 4: ON-GROUND INTERVENTIONS & CIRCULAR SWAP
+     ======================================================== -->
+<div class="slide" id="slide-4">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="header-pill">SLIDE 3 OF 3 • ON-GROUND INTERVENTIONS &amp; CIRCULAR OFFTAKE</div>
+      <h2 class="slide-title">Actionable Interventions: Amber Demand Stimulation vs. Red Circular Rescue</h2>
+      <div class="slide-subtitle">Differentiated playbooks for slow-moving vs near-expiry stock, backed by the Lateral StockSwap Engine (Deliverable B)</div>
+    </div>
+    <div class="header-counter">OPERATIONS &amp; ESG ROI</div>
+  </div>
+
+  <div class="s4-container">
+    <div class="s4-grid">
+      <!-- Left Column: Differentiated Playbooks (Amber vs Red) -->
+      <div class="s4-playbooks-col">
+        <!-- Amber Playbook -->
+        <div class="playbook-card" style="border-left: 4px solid var(--amber);">
+          <div class="playbook-header">
+            <span class="playbook-title" style="color: #B45309;">
+              🟡 Amber Playbook: Slow-Moving Stock (&gt; 42d DOI)
+            </span>
+            <span class="badge amber">DEMAND STIMULATION</span>
+          </div>
+          <div class="playbook-list">
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--amber);"></div>
+              <div>
+                <strong>Planogram Eye-Level Re-Anchoring:</strong> Guided AR prompts FSO to relocate stagnant shade from bottom shelves to the Golden Eye Zone (1.2m–1.5m), directly adjacent to high-velocity Hero SKUs to capture footfall visual attention.
+              </div>
+            </div>
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--amber);"></div>
+              <div>
+                <strong>Dynamic B2B Margin Bundling:</strong> SFA app automatically generates margin-sweetened trade bundles (e.g. <em>"Buy 6 Maybelline Colossal Kajals, get 2 Amber Serums at +6% retailer gross margin"</em>) to accelerate sell-in.
+              </div>
+            </div>
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--amber);"></div>
+              <div>
+                <strong>Consumer Trial Micro-Incentive:</strong> Retailers unlock instantaneous ₹20 UPI scan-pay rebates for customers buying Amber-flagged items during weekend rush hours.
+              </div>
+            </div>
+          </div>
+          <div class="playbook-subbox">
+            <div>
+              <strong>Trigger Metric</strong>
+              <span>Untouched &gt; 30d</span>
+            </div>
+            <div>
+              <strong>Margin Delta</strong>
+              <span>+6% B2B Gross Margin</span>
+            </div>
+            <div>
+              <strong>Target Turn</strong>
+              <span>&lt; 14 Days Clearance</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Red Playbook -->
+        <div class="playbook-card" style="border-left: 4px solid var(--red);">
+          <div class="playbook-header">
+            <span class="playbook-title" style="color: #B91C1C;">
+              🔴 Red Playbook: Critical Expiry (&le; 90 Days Remaining)
+            </span>
+            <span class="badge red">CIRCULAR REDISTRIBUTION</span>
+          </div>
+          <div class="playbook-list">
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--red);"></div>
+              <div>
+                <strong>Hyperlocal Lateral 'StockSwap':</strong> Autonomous cross-door inventory transfer. Red stock is rerouted to high-velocity salons or modern trade doors within 3 km instead of undergoing depot return.
+              </div>
+            </div>
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--red);"></div>
+              <div>
+                <strong>Professional Salon Back-Bar Offtake:</strong> Unsold premium hair care, treatments, and serums are liquidated at cost-neutral rates for professional in-salon services (consumed within 7–14 days).
+              </div>
+            </div>
+            <div class="playbook-item">
+              <div class="playbook-bullet" style="background: var(--red);"></div>
+              <div>
+                <strong>Zero-Landfill Tester Unit Conversion:</strong> 1-tap digital authorization converts 1 sealed ageing unit into an authorized in-store tester, eliminating customer purchase friction while zeroing disposal overhead.
+              </div>
+            </div>
+          </div>
+          <div class="playbook-subbox">
+            <div>
+              <strong>Trigger Metric</strong>
+              <span>DTE &le; 90d (or &gt; 60d dead)</span>
+            </div>
+            <div>
+              <strong>Salvage Rate</strong>
+              <span>100% Value Recovery</span>
+            </div>
+            <div>
+              <strong>Landfill Bleed</strong>
+              <span>0% Incinerated Scrap</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Diagram of Lateral StockSwap Matchmaker -->
+      <div class="swap-diagram-card">
+        <div class="s2-card-header">
+          <span class="s2-card-title">Hyperlocal Lateral StockSwap Architecture</span>
+          <span class="badge green">ALGORITHMIC RE-ROUTING</span>
+        </div>
+
+        <div class="swap-flow-visual">
+          <div class="swap-node donor">
+            <span class="badge red" style="width: fit-content;">DONOR OUTLET</span>
+            <div class="swap-node-title">Gupta Beauty (GT)</div>
+            <div class="swap-node-desc">
+              • 12 Units Red Serum<br>
+              • DTE: 68 Days<br>
+              • Velocity: 0.2 u/day<br>
+              • Risk: 100% Write-off
+            </div>
+          </div>
+
+          <div class="swap-connector">
+            <span>1.2 km</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+
+          <div class="swap-node engine">
+            <span class="badge gold" style="width: fit-content;">AI MATCHMAKER</span>
+            <div class="swap-node-title">VeloCity Engine</div>
+            <div class="swap-node-desc">
+              • Haversine &le; 3 km<br>
+              • Velocity Multiplier &gt; 5&times;<br>
+              • Safe DOI Headroom (&lt; 21d)<br>
+              • Auto DMS Credit
+            </div>
+          </div>
+
+          <div class="swap-connector">
+            <span>Instant</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+
+          <div class="swap-node recipient">
+            <span class="badge green" style="width: fit-content;">RECIPIENT OUTLET</span>
+            <div class="swap-node-title">Looks Salon Bandra</div>
+            <div class="swap-node-desc">
+              • 2.4 u/day Offtake<br>
+              • Back-bar Service Use<br>
+              • Consumed in &lt; 6 Days<br>
+              • Zero Value Decay
+            </div>
+          </div>
+        </div>
+
+        <div class="match-rules-box">
+          <div class="rule-item">
+            <strong>Geographic Radius</strong>
+            <span>Restricted to &le; 3.0 km radius (FSO beat proximity or quick courier).</span>
+          </div>
+          <div class="rule-item">
+            <strong>Velocity Differential</strong>
+            <span>Recipient door must turn stock &gt; 1.5&times; faster than donor store.</span>
+          </div>
+          <div class="rule-item">
+            <strong>DOI Safety Cap</strong>
+            <span>Recipient Days-of-Inventory cannot exceed 21 days post-transfer.</span>
+          </div>
+        </div>
+
+        <div class="financial-savings-box">
+          <div class="savings-item">
+            <strong>₹14,400</strong>
+            <span>Avoided Inventory Write-Off</span>
+          </div>
+          <div class="savings-item">
+            <strong>₹450</strong>
+            <span>Avoided Return Freight</span>
+          </div>
+          <div class="savings-item">
+            <strong>₹320</strong>
+            <span>Avoided EPR Incineration Fee</span>
+          </div>
+          <div class="savings-item">
+            <strong style="color: var(--green);">₹15,170</strong>
+            <span>Net Protected P&amp;L Value</span>
+          </div>
+        </div>
+
+        <div style="background: #F1F5F9; border-radius: 8px; padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+          <div>
+            <strong>Automated Ledger Settlement:</strong> Immediate Distributor Management System (DMS) secondary credit note issued to Gupta Beauty. Zero dispute, zero manual paperwork.
+          </div>
+          <span class="badge green" style="flex-shrink: 0;">100% AUDITABLE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Impact Strip -->
+    <div class="s4-bottom-strip">
+      <div class="strip-item">
+        <div class="strip-val">73% Cut</div>
+        <div class="strip-label">Reduction in unsellable retail returns across pilot doors</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-val">₹42 Cr+</div>
+        <div class="strip-label">Annualized protected EBITDA margin from avoided destruction</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-val">120 MT</div>
+        <div class="strip-label">Virgin plastic and glass packaging saved from regional landfill</div>
+      </div>
+      <div class="strip-item">
+        <div class="strip-val">4.5 Months</div>
+        <div class="strip-label">Full payback period on regional edge-CV software deployment</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================
+     SLIDE 5: ROADMAP, GOVERNANCE & NFI GAMIFICATION
+     ======================================================== -->
+<div class="slide dark" id="slide-5">
+  <div class="slide-header">
+    <div class="header-left">
+      <div class="header-pill">GOVERNANCE &amp; EXECUTION ROADMAP</div>
+      <h2 class="slide-title">Scalable Execution: 90-Day Pilot, EPR Governance &amp; Gamified NFI</h2>
+      <div class="slide-subtitle">A realistic phased rollout from urban pilot to national DMS integration under L’Oréal for the Future</div>
+    </div>
+    <div class="header-counter">ROLLOUT PLAN</div>
+  </div>
+
+  <div class="s5-container">
+    <div class="timeline-card">
+      <div class="timeline-header">
+        <span style="font-size: 13px; font-weight: 800; letter-spacing: 1px; color: var(--gold); text-transform: uppercase;">
+          90-Day Phased Implementation Corridor
+        </span>
+        <span style="font-size: 11px; color: #94A3B8;">FOCUS CORRIDOR: MUMBAI &amp; DELHI NCR (190 DOORS)</span>
+      </div>
+
+      <div class="timeline-grid">
+        <div class="timeline-phase highlight">
+          <span class="timeline-phase-badge">PHASE 1 • DAYS 1–30</span>
+          <div class="timeline-phase-title">Pilot Corridor Calibration</div>
+          <div class="timeline-phase-desc">
+            • Deploy edge-CV app to 150 General Trade &amp; 40 Salon doors in Western Mumbai.<br>
+            • Benchmark shelf dust &amp; OCR accuracy under dim retail lighting.<br>
+            • Establish store freshness baselines (initial territory average: 62/100).
+          </div>
+        </div>
+
+        <div class="timeline-phase">
+          <span class="timeline-phase-badge">PHASE 2 • DAYS 31–60</span>
+          <div class="timeline-phase-title">Intervention &amp; Swap Rollout</div>
+          <div class="timeline-phase-desc">
+            • Activate lateral StockSwap routing between neighboring GT &amp; Salon doors.<br>
+            • Inject automated B2B margin bundling into distributor cart workflows.<br>
+            • Launch the Net Freshness Index (NFI) leaderboard and field gamification.
+          </div>
+        </div>
+
+        <div class="timeline-phase">
+          <span class="timeline-phase-badge">PHASE 3 • DAYS 61–90</span>
+          <div class="timeline-phase-title">National Scale &amp; EPR Sync</div>
+          <div class="timeline-phase-desc">
+            • Full two-way API integration with SAP DMS across West &amp; North zones.<br>
+            • Direct automated telemetry reporting to CPCB Extended Producer Responsibility portal.<br>
+            • Full project payback achieved; scale to Southern &amp; Eastern clusters.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Split: NFI Math + Governance -->
+    <div class="s5-bottom-split">
+      <!-- Left: Net Freshness Index Formula -->
+      <div class="nfi-card">
+        <div class="s2-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+          <span style="font-size: 13px; font-weight: 800; color: #FFFFFF; letter-spacing: 0.5px; text-transform: uppercase;">
+            Net Freshness Index (NFI): Gamified Field Quota
+          </span>
+          <span class="badge gold">INCENTIVE ALIGNMENT</span>
+        </div>
+
+        <p style="font-size: 11px; color: #94A3B8; line-height: 1.4;">
+          Traditional SFA rewards gross booking, incentivizing "dumping" slow stock into stores. VeloCity AI replaces this with the <strong>Net Freshness Index (NFI)</strong>, tying 20% of quarterly rep commissions to shelf vitality:
+        </p>
+
+        <div class="nfi-formula-box">
+          NFI = 100 &times; (1 - RedShare) + 4.0 &times; (Swaps) + 2.5 &times; (Testers) - 8.0 &times; (Skips)
+        </div>
+
+        <div class="nfi-mechanics">
+          <div class="nfi-mech-item">
+            <strong>Base Freshness</strong>
+            <span>100 minus % share of Red SKUs</span>
+          </div>
+          <div class="nfi-mech-item">
+            <strong>Active Bounties</strong>
+            <span>+4.0 pts per swap; +2.5 pts tester</span>
+          </div>
+          <div class="nfi-mech-item">
+            <strong>Neglect Penalty</strong>
+            <span>-8.0 pts per skipped store</span>
+          </div>
+        </div>
+
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank &amp; FSO Name</th>
+              <th>Beat Territory</th>
+              <th>Red %</th>
+              <th>Swaps</th>
+              <th>NFI</th>
+              <th>Bonus Payout</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>#1 Aakash Sharma</strong></td>
+              <td>West Mumbai (Beat #4)</td>
+              <td>3.2%</td>
+              <td>14</td>
+              <td><strong style="color: var(--green);">97.5</strong></td>
+              <td style="color: var(--gold-light);"><strong>+₹12,500</strong></td>
+            </tr>
+            <tr>
+              <td><strong>#2 Rohit Verma</strong></td>
+              <td>South Delhi (Beat #12)</td>
+              <td>5.1%</td>
+              <td>9</td>
+              <td><strong style="color: var(--green);">94.2</strong></td>
+              <td style="color: var(--gold-light);"><strong>+₹9,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>#3 Priya Nair</strong></td>
+              <td>Bandra North (Beat #2)</td>
+              <td>6.8%</td>
+              <td>7</td>
+              <td><strong style="color: var(--amber);">91.8</strong></td>
+              <td style="color: var(--gold-light);"><strong>+₹6,500</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Right: ESG Governance & Credentials -->
+      <div class="gov-card">
+        <div class="s2-card-header" style="border-bottom-color: rgba(255,255,255,0.1);">
+          <span style="font-size: 13px; font-weight: 800; color: #FFFFFF; letter-spacing: 0.5px; text-transform: uppercase;">
+            EPR &amp; L’Oréal for the Future Governance
+          </span>
+          <span class="badge green">REGULATORY COMPLIANT</span>
+        </div>
+
+        <div class="epr-kpi-row">
+          <div class="epr-kpi-item">
+            <strong>100% CPCB</strong>
+            <span>EPR Digital Sync</span>
+          </div>
+          <div class="epr-kpi-item">
+            <strong>18,400 km</strong>
+            <span>Avoided Freight/Mo</span>
+          </div>
+          <div class="epr-kpi-item">
+            <strong>4.8 MT</strong>
+            <span>CO₂e Abatement/Mo</span>
+          </div>
+        </div>
+
+        <div class="gov-list">
+          <div class="gov-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>EPR Liability Offsets:</strong> Rescued stock directly offsets Extended Producer Responsibility plastic penalties under Indian MoEFCC guidelines.</span>
+          </div>
+          <div class="gov-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Circular Supply Chain:</strong> Transforms reverse logistics from a dead loss center into an autonomous lateral redistribution network.</span>
+          </div>
+        </div>
+
+        <div class="risk-mitigation-grid">
+          <div><strong>• Retailer Transfer Hesitation:</strong> Addressed via instant DMS digital credit note + ₹200 handling credit.</div>
+          <div><strong>• Recipient Channel Saturation:</strong> Hard safety ceiling capping recipient post-swap DOI at &lt; 21 days.</div>
+        </div>
+
+        <div class="team-footer">
+          <div>
+            <strong>Submission:</strong> L’Oréal Sustainability Challenge 2026<br>
+            <strong>Track:</strong> Sales &amp; Commercial Track • Executive Case Presentation
+          </div>
+          <div style="text-align: right;">
+            <strong>Solution:</strong> VeloCity AI Mobile Platform<br>
+            <strong>Readiness:</strong> Pilot Corridor Ready
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

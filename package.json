@@ -5,7 +5,7 @@
   "description": "VeloCity AI — Smart Reverse-Logistics & Sales Intelligence System (L'Oréal SUS 2026)",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-strip-types --test services/risk-engine/test/*.test.ts",
+    "test": "node --experimental-strip-types --test services/*/test/*.test.ts",
     "seed": "node --experimental-strip-types simulation/seed.ts",
     "mock-erp": "node --experimental-strip-types simulation/mock-erp-feed.ts"
   },

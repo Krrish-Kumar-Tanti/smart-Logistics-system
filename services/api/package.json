@@ -1,0 +1,14 @@
+{
+  "name": "@velocity/api",
+  "version": "0.1.0",
+  "description": "VeloCity AI — REST API Service for shelf scanning, risk evaluation, and lateral stock swaps",
+  "type": "module",
+  "main": "./src/server.ts",
+  "scripts": {
+    "start": "node --experimental-strip-types src/server.ts",
+    "test": "node --experimental-strip-types --test test/*.test.ts"
+  },
+  "keywords": ["velocity", "api", "rest", "fmcg", "reverse-logistics"],
+  "author": "Krrish Kumar Tanti",
+  "license": "MIT"
+}
