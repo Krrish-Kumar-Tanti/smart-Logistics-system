@@ -151,3 +151,4 @@ VeloCity AI delivers an auditable digital chain of custody:
 1. **Immutable Ledger Tracking:** Every batch transition (Inward $\rightarrow$ Audit $\rightarrow$ Swap $\rightarrow$ Tester $\rightarrow$ Recycled) is recorded with timestamp and GPS coordinates.
 2. **Scope 3 Carbon Avoidance:** Eliminating long-haul reverse logistics reduces return freight fuel consumption by **65%**.
 3. **Zero-Landfill Certification:** Auditable documentation proving that 90%+ of at-risk shelf inventory was redirected to active consumption or certified recycling rather than municipal landfills.
+
