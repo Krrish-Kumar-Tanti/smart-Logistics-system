@@ -20,11 +20,26 @@ This directory contains the executive presentation deck submitted for L'Oréal S
 
 ---
 
-## 📄 Formats & Deliverables
-
 - **Standalone Interactive HTML:** [`index.html`](index.html) — High-DPI 1920x1080 CSS grid slides with vector SVG diagrams, ready to view in any modern browser.
 - **Compiled Executive PDF:** [`Loreal_VeloCity_AI_Presentation.pdf`](Loreal_VeloCity_AI_Presentation.pdf) — Print-ready vector presentation.
+- **Editable Deck (PPTX):** [`Loreal_VeloCity_AI_Presentation.pptx`](Loreal_VeloCity_AI_Presentation.pptx) — Native PowerPoint version of the deck for judge annotations and live delivery.
 - **Slide Renders:** [`slides/slide_1.png`](slides/slide_1.png) through [`slides/slide_5.png`](slides/slide_5.png).
+- **KPI Chart Assets:** [`assets/chart_leakage.png`](assets/chart_leakage.png), [`assets/chart_impact.png`](assets/chart_impact.png), [`assets/chart_triband.png`](assets/chart_triband.png) — 300-DPI chart exports used across the case material (revenue-leakage pie, baseline-vs-target impact bars, tri-band protocol timeline).
+
+---
+
+## 🔁 Regenerating the PPTX & Charts
+
+```bash
+# Editable PPTX deck (requires python-pptx)
+pip install python-pptx
+python create_presentation.py
+
+# KPI chart PNGs (requires matplotlib + numpy)
+cd assets
+pip install matplotlib numpy
+python generate_charts.py
+```
 
 ---
 

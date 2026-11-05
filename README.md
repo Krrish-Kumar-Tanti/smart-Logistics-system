@@ -453,7 +453,10 @@ smart-Logistics-system/
 ├── presentation/                  ← Executive 5-Slide Pitch Deck (L'Oréal SUS 2026)
 │   ├── index.html                 · Standalone interactive HTML presentation deck
 │   ├── Loreal_VeloCity_AI_Presentation.pdf · High-DPI vector slide deck PDF
+│   ├── Loreal_VeloCity_AI_Presentation.pptx · Editable native PowerPoint deck
+│   ├── create_presentation.py     · python-pptx generator for the PPTX deck
 │   ├── slides/                    · Rendered high-res PNG slide previews (Slides 1-5)
+│   ├── assets/                    · 300-DPI KPI chart PNGs + matplotlib generator
 │   ├── render_slides.cjs          · Puppeteer automated slide & PDF rendering pipeline
 │   └── README.md                  · Presentation architecture & slide breakdown
 ├── docs/                          ← Case study analysis & deliverable deep-dives
