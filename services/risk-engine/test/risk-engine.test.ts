@@ -4,6 +4,7 @@ import {
   evaluateRiskBand,
   calculateStoreFreshness,
   calculateFsoNfi,
+  getNfiTier,
   haversineDistanceKm,
   rankSwapCandidates,
 } from '../src/index.ts';
@@ -161,4 +162,14 @@ test('rankSwapCandidates — selects fast-moving nearby salon over distant or sl
   assert.equal(matches.length, 1);
   assert.equal(matches[0].storeId, 'store-1');
   assert.equal(matches[0].velocityMultiplier, 9);
+});
+
+test('getNfiTier — maps NFI scores to canonical leaderboard tiers', () => {
+  assert.equal(getNfiTier(94.2), 'Elite Tier');
+  assert.equal(getNfiTier(90), 'Elite Tier');
+  assert.equal(getNfiTier(89.5), 'High Performer');
+  assert.equal(getNfiTier(86.8), 'High Performer');
+  assert.equal(getNfiTier(79.1), 'Improving');
+  assert.equal(getNfiTier(55), 'Needs Triage Attention');
+  assert.equal(getNfiTier(0), 'Needs Triage Attention');
 });

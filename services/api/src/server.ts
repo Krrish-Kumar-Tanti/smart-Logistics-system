@@ -6,6 +6,7 @@ import {
   evaluateRiskBand,
   calculateStoreFreshness,
   calculateFsoNfi,
+  getNfiTier,
   rankSwapCandidates,
   haversineDistanceKm,
   type RiskBand,
@@ -353,6 +354,39 @@ export async function handleApiRequest(req: http.IncomingMessage, res: http.Serv
       });
     }
 
+    // 9. FSO Net Freshness Index Evaluator
+    if (pathname === '/api/fso/evaluate' && method === 'POST') {
+      const body = await parseJsonBody(req);
+
+      const params = {
+        totalSkusInTerritory: Number(body.totalSkusInTerritory ?? 0),
+        postVisitRedSkus: Number(body.postVisitRedSkus ?? 0),
+        swapsCompleted: Number(body.swapsCompleted ?? 0),
+        testerConversions: Number(body.testerConversions ?? 0),
+        skippedStores: Number(body.skippedStores ?? 0),
+      };
+
+      const hasInvalidCount = Object.values(params).some(v => !Number.isFinite(v) || v < 0);
+      if (hasInvalidCount) {
+        return sendJson(res, 400, {
+          error: 'Invalid NFI input',
+          message: 'All NFI counters must be finite, non-negative numbers.',
+          received: params,
+        });
+      }
+
+      const nfiScore = calculateFsoNfi(params);
+
+      return sendJson(res, 200, {
+        fsoId: body.fsoId ?? 'unknown',
+        evaluatedAt: new Date().toISOString(),
+        inputs: params,
+        nfiScore,
+        freshnessRank: getNfiTier(nfiScore),
+        monthlyBountiesInr: Math.round(nfiScore * 150),
+      });
+    }
+
     // 404 Route Not Found
     return sendJson(res, 404, {
       error: 'Route not found',
@@ -366,6 +400,7 @@ export async function handleApiRequest(req: http.IncomingMessage, res: http.Serv
         'POST /api/inventory/evaluate',
         'POST /api/swaps/match',
         'GET /api/leaderboard',
+        'POST /api/fso/evaluate',
       ],
     });
   } catch (err: any) {
@@ -389,6 +424,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.log(`  Health Check: http://localhost:${DEFAULT_PORT}/health`);
     console.log(`  Outlets:      http://localhost:${DEFAULT_PORT}/api/outlets`);
     console.log(`  Leaderboard:  http://localhost:${DEFAULT_PORT}/api/leaderboard`);
+  console.log(`  NFI Evaluate: POST http://localhost:${DEFAULT_PORT}/api/fso/evaluate`);
     console.log(`================================================================`);
   });
 }

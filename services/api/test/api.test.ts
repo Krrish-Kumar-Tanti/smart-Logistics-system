@@ -152,6 +152,34 @@ describe('VeloCity AI — API Gateway Service Tests', () => {
     assert.ok(res.data.leaderboard[0].nfiScore >= 90);
   });
 
+  it('POST /api/fso/evaluate — computes live NFI score and leaderboard tier from field counters', async () => {
+    // Red share = 8/40 = 0.2 -> 80 base + 4 swaps*4 = 96 + 3 tester*2.5 = 103.5 - 1 skip*8 = 95.5 -> Elite
+    const res = await simulateRequest('POST', '/api/fso/evaluate', {
+      fsoId: 'FSO-104',
+      totalSkusInTerritory: 40,
+      postVisitRedSkus: 8,
+      swapsCompleted: 4,
+      testerConversions: 3,
+      skippedStores: 1,
+    });
+
+    assert.strictEqual(res.statusCode, 200);
+    assert.strictEqual(res.data.fsoId, 'FSO-104');
+    assert.strictEqual(res.data.nfiScore, 95.5);
+    assert.strictEqual(res.data.freshnessRank, 'Elite Tier');
+    assert.ok(res.data.monthlyBountiesInr > 0);
+  });
+
+  it('POST /api/fso/evaluate — rejects negative counters with 400', async () => {
+    const res = await simulateRequest('POST', '/api/fso/evaluate', {
+      totalSkusInTerritory: -5,
+      postVisitRedSkus: 0,
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid NFI input');
+  });
+
   it('OPTIONS /any-route — handles CORS pre-flight gracefully', async () => {
     const res = await simulateRequest('OPTIONS', '/api/scan/shelf');
     assert.strictEqual(res.statusCode, 204);

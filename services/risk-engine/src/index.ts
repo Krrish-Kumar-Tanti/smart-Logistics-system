@@ -147,6 +147,20 @@ export function calculateFsoNfi(params: FsoNfiParams): number {
   return Math.max(0, Math.min(100, Math.round(totalScore * 10) / 10));
 }
 
+export type NfiTier = 'Elite Tier' | 'High Performer' | 'Improving' | 'Needs Triage Attention';
+
+/**
+ * Maps a Net Freshness Index score to its leaderboard performance tier.
+ * Thresholds mirror the canonical leaderboard cut-offs:
+ *   >= 90 Elite Tier, >= 80 High Performer, >= 65 Improving, else Needs Triage Attention.
+ */
+export function getNfiTier(nfiScore: number): NfiTier {
+  if (nfiScore >= 90) return 'Elite Tier';
+  if (nfiScore >= 80) return 'High Performer';
+  if (nfiScore >= 65) return 'Improving';
+  return 'Needs Triage Attention';
+}
+
 /**
  * Haversine distance formula between two GPS coordinates in kilometers.
  */
