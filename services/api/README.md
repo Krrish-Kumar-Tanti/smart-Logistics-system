@@ -41,4 +41,5 @@ npm test
 | `POST` | `/api/inventory/evaluate` | Batch inventory evaluation and store freshness scoring |
 | `POST` | `/api/swaps/match` | Hyperlocal lateral StockSwap recipient matchmaker |
 | `GET` | `/api/leaderboard` | FSO Net Freshness Index (NFI) rankings and bounties |
+| `POST` | `/api/fso/evaluate` | Live NFI score, freshness tier, and monthly bounty from field counters |
 
