@@ -41,6 +41,31 @@ function sendJson(res: http.ServerResponse, statusCode: number, data: unknown) {
   res.end(payload);
 }
 
+/**
+ * Validates a single numeric API field. Returns an error message string when invalid,
+ * or null when the value is acceptable. Optional fields may be undefined.
+ */
+export function validateNumberField(
+  label: string,
+  value: unknown,
+  { min, max, required = true }: { min?: number; max?: number; required?: boolean } = {}
+): string | null {
+  if (value === undefined || value === null || value === '') {
+    return required ? `${label} is required` : null;
+  }
+  const num = Number(value);
+  if (!Number.isFinite(num)) {
+    return `${label} must be a finite number`;
+  }
+  if (min !== undefined && num < min) {
+    return `${label} must be >= ${min}`;
+  }
+  if (max !== undefined && num > max) {
+    return `${label} must be <= ${max}`;
+  }
+  return null;
+}
+
 function parseJsonBody(req: http.IncomingMessage): Promise<any> {
   return new Promise((resolve, reject) => {
     let body = '';
@@ -144,6 +169,22 @@ export async function handleApiRequest(req: http.IncomingMessage, res: http.Serv
         packagingDentScore = 0.15,
       } = body;
 
+      const validationErrors = [
+        validateNumberField('daysToExpiry', daysToExpiry),
+        validateNumberField('stagnationDays', stagnationDays, { min: 0 }),
+        validateNumberField('daysOfInventory', daysOfInventory, { min: 0 }),
+        validateNumberField('shelfDustScore', shelfDustScore, { min: 0, max: 1 }),
+        validateNumberField('packagingDentScore', packagingDentScore, { min: 0, max: 1 }),
+      ].filter(Boolean);
+
+      if (validationErrors.length > 0) {
+        return sendJson(res, 400, {
+          error: 'Invalid scan input',
+          message: 'Shelf telemetry must be finite numbers; counters >= 0 and edge-CV scores within [0, 1].',
+          errors: validationErrors,
+        });
+      }
+
       const riskResult = evaluateRiskBand({
         daysToExpiry,
         stagnationDays,
@@ -197,6 +238,23 @@ export async function handleApiRequest(req: http.IncomingMessage, res: http.Serv
     if (pathname === '/api/inventory/evaluate' && method === 'POST') {
       const body = await parseJsonBody(req);
       const items = Array.isArray(body.items) ? body.items : [body];
+
+      const validationErrors = items
+        .flatMap((item: any, index: number) => [
+          validateNumberField(`items[${index}].daysToExpiry`, item.daysToExpiry ?? 180),
+          validateNumberField(`items[${index}].stagnationDays`, item.stagnationDays ?? 10, { min: 0 }),
+          validateNumberField(`items[${index}].daysOfInventory`, item.daysOfInventory ?? 21, { min: 0 }),
+          validateNumberField(`items[${index}].targetDoi`, item.targetDoi, { min: 0, required: false }),
+        ])
+        .filter(Boolean);
+
+      if (validationErrors.length > 0) {
+        return sendJson(res, 400, {
+          error: 'Invalid inventory input',
+          message: 'Batch counters must be finite numbers; stagnation days, DOI and target DOI must be >= 0.',
+          errors: validationErrors,
+        });
+      }
 
       const evaluations = items.map((item: any) => {
         const res = evaluateRiskBand({

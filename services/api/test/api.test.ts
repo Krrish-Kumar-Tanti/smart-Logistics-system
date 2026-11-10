@@ -180,6 +180,41 @@ describe('VeloCity AI — API Gateway Service Tests', () => {
     assert.strictEqual(res.data.error, 'Invalid NFI input');
   });
 
+  it('POST /api/inventory/evaluate — rejects negative counters with 400', async () => {
+    const res = await simulateRequest('POST', '/api/inventory/evaluate', {
+      daysToExpiry: 200,
+      stagnationDays: -30,
+      daysOfInventory: 15,
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid inventory input');
+  });
+
+  it('POST /api/inventory/evaluate — rejects non-finite batch counters with 400 instead of silently classifying GREEN', async () => {
+    // NaN comparisons are all false, so unguarded input would fall through to GREEN/HEALTHY
+    const res = await simulateRequest('POST', '/api/inventory/evaluate', {
+      items: [{ skuId: 'sku-bad', daysToExpiry: 'ninety-days', stagnationDays: 10, daysOfInventory: 20 }],
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid inventory input');
+    assert.ok(Array.isArray(res.data.errors));
+    assert.ok(res.data.errors[0].includes('daysToExpiry'));
+  });
+
+  it('POST /api/scan/shelf — rejects out-of-range edge-CV scores with 400', async () => {
+    const res = await simulateRequest('POST', '/api/scan/shelf', {
+      daysToExpiry: 65,
+      stagnationDays: 50,
+      daysOfInventory: 45,
+      shelfDustScore: 1.4, // CV dust score must stay within [0, 1]
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid scan input');
+  });
+
   it('OPTIONS /any-route — handles CORS pre-flight gracefully', async () => {
     const res = await simulateRequest('OPTIONS', '/api/scan/shelf');
     assert.strictEqual(res.statusCode, 204);

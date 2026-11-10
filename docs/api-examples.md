@@ -72,11 +72,19 @@ curl -s -X POST http://localhost:4000/api/scan/shelf \
 
 `shelfDustScore > 0.6` or `packagingDentScore > 0.5` flags physical distress on the shelf.
 
+Telemetry is validated: counters must be finite and `>= 0`, edge-CV scores must stay within `[0, 1]` (`daysToExpiry` may be `0` or negative — that is an already-expired batch). Malformed payloads return `400`:
+
+```bash
+curl -s -X POST http://localhost:4000/api/scan/shelf \
+  -H "Content-Type: application/json" \
+  -d '{ "daysToExpiry": "ninety-days" }' | jq
+```
+
 ---
 
 ## 5 · Batch Inventory Evaluation (Tri-Band Risk Engine)
 
-Evaluate a single batch *or* an array of batches (`items`), and get an aggregate store freshness score back:
+Evaluate a single batch *or* an array of batches (`items`), and get an aggregate store freshness score back. Batch counters must be finite; `stagnationDays`, `daysOfInventory` and `targetDoi` must be `>= 0` (else `400`):
 
 ```bash
 curl -s -X POST http://localhost:4000/api/inventory/evaluate \

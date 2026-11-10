@@ -4,7 +4,7 @@ All notable changes to the VeloCity AI submission, newest first. Dates are commi
 
 ## Unreleased
 
-- Preparation for the live NFI evaluation demo pass and judge walkthrough notes.
+- Hardened the triage endpoints: `POST /api/inventory/evaluate` and `POST /api/scan/shelf` now validate batch counters and edge-CV scores, returning `400` instead of silently downgrading malformed/`NaN` telemetry to a GREEN band (27 tests).
 
 ## 2026-11-08 — API Documentation
 
