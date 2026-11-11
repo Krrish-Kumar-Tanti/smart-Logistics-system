@@ -8,7 +8,7 @@ Entry for **L'Oréal Sustainability Challenge (L'Oréal SUS) 2026** — Executiv
 
 [![Track](https://img.shields.io/badge/Track-Sales%20%26%20Commercial-000000)]()
 [![Approach](https://img.shields.io/badge/Approach-Tech--First%20Mobile%20App-C9A227)]()
-[![Tests](https://img.shields.io/badge/Tests-21%20Passed-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-27%20Passed-brightgreen)]()
 [![Presentation](https://img.shields.io/badge/Executive%20Deck-5%20Slides%20(HTML%20%2B%20PDF)-purple)](presentation/)
 [![Status](https://img.shields.io/badge/Status-Phase%201%20API%20%2B%20Risk%20Engine%20%2B%20Simulation-blue)]()
 
@@ -469,7 +469,7 @@ smart-Logistics-system/
 │   └── data/                      · territory-snapshot.json & mock-sap-feed.csv
 ├── services/
 │   ├── api/                       ← Lightweight REST API Gateway (Node/TS native)
-│   └── risk-engine/               ← Pure Tri-Band rules + NFI scoring (21 unit tests)
+│   └── risk-engine/               ← Pure Tri-Band rules + NFI scoring (13 unit tests)
 ├── apps/
 │   ├── mobile/                    ← FSO field app (Expo React Native, TypeScript)
 │   └── dashboard/                 ← ASM regional cockpit (React + Vite + Tailwind)
@@ -499,7 +499,7 @@ smart-Logistics-system/
 ## 17 · Running the Project
 
 ```bash
-# 1. Run all unit tests across risk-engine and API services (21 tests)
+# 1. Run all unit tests across risk-engine and API services (27 tests)
 npm test
 
 # 2. Run synthetic territory simulation (generates 40 Mumbai stores, 400 batches)
