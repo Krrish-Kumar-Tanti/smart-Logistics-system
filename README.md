@@ -20,11 +20,11 @@ Entry for **L'Oréal Sustainability Challenge (L'Oréal SUS) 2026** — Executiv
 
 | § | Section |
 |---|---------|
-| [1](#1--the-problem-why-this-exists) | The Problem — Why This Exists |
+| [1](#1--the-problem--why-this-exists) | The Problem — Why This Exists |
 | [2](#2--the-solution--velocity-ai-at-a-glance) | The Solution — VeloCity AI at a Glance |
 | [3](#3--system-architecture--how-it-all-works) | System Architecture — How It All Works |
 | [4](#4--technology-stack) | Technology Stack |
-| [5](#5--pages--screens-complete-map) | Pages & Screens — Complete Map |
+| [5](#5--pages--screens--complete-map) | Pages & Screens — Complete Map |
 | [6](#6--app-pages-deep-dive--page-by-page) | App Pages Deep Dive — Page by Page |
 | [7](#7--the-3-second-edge-cv-shelf-scan-pipeline) | The 3-Second Edge-CV Shelf Scan Pipeline |
 | [8](#8--tri-band-risk-engine--the-brain) | Tri-Band Risk Engine — The Brain |
