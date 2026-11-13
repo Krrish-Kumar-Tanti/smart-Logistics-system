@@ -2,6 +2,10 @@
 
 All notable changes to the VeloCity AI submission, newest first. Dates are commit dates (IST).
 
+## 2026-11-13 — Swap Matchmaker Hardening
+
+- Hardened `POST /api/swaps/match`, the last unguarded POST endpoint: donor coordinates, velocity, units and search radius are now validated, returning `400` instead of propagating `NaN` coordinates through the Haversine ranking (which silently matched every candidate at "NaN distance" — 29 tests).
+
 ## 2026-11-10 — API Hardening
 
 - Hardened the triage endpoints: `POST /api/inventory/evaluate` and `POST /api/scan/shelf` now validate batch counters and edge-CV scores, returning `400` instead of silently downgrading malformed/`NaN` telemetry to a GREEN band (27 tests).

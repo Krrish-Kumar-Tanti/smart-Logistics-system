@@ -215,6 +215,33 @@ describe('VeloCity AI — API Gateway Service Tests', () => {
     assert.strictEqual(res.data.error, 'Invalid scan input');
   });
 
+  it('POST /api/swaps/match — rejects non-finite donor coordinates with 400 instead of matching every candidate at NaN distance', async () => {
+    // NaN coordinates make every Haversine comparison false, so unguarded input
+    // would silently rank all candidates with NaN scores as "in radius"
+    const res = await simulateRequest('POST', '/api/swaps/match', {
+      donorStoreCode: 'GT-001',
+      donorLat: 'nineteen-degrees',
+      donorLng: 72.8298,
+      donorVelocity30d: 1.2,
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid swap match input');
+    assert.ok(Array.isArray(res.data.errors));
+    assert.ok(res.data.errors[0].includes('donorLat'));
+  });
+
+  it('POST /api/swaps/match — rejects out-of-range donor latitude and zero search radius with 400', async () => {
+    const res = await simulateRequest('POST', '/api/swaps/match', {
+      donorLat: 95, // outside [-90, 90]
+      maxRadiusKm: 0, // radius must stay within [0.1, 50] km
+    });
+
+    assert.strictEqual(res.statusCode, 400);
+    assert.strictEqual(res.data.error, 'Invalid swap match input');
+    assert.strictEqual(res.data.errors.length, 2);
+  });
+
   it('OPTIONS /any-route — handles CORS pre-flight gracefully', async () => {
     const res = await simulateRequest('OPTIONS', '/api/scan/shelf');
     assert.strictEqual(res.statusCode, 204);

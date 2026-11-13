@@ -293,6 +293,27 @@ export async function handleApiRequest(req: http.IncomingMessage, res: http.Serv
         maxRadiusKm = 10.0,
       } = body;
 
+      // Same hardening contract as the triage endpoints: malformed donor telemetry
+      // must fail fast with 400 instead of propagating NaN through the Haversine
+      // ranking (NaN comparisons are all false, so an unguarded NaN coordinate
+      // silently matched every candidate with a NaN score).
+      const validationErrors = [
+        validateNumberField('donorLat', donorLat, { min: -90, max: 90, required: false }),
+        validateNumberField('donorLng', donorLng, { min: -180, max: 180, required: false }),
+        validateNumberField('donorVelocity30d', donorVelocity30d, { min: 0, required: false }),
+        validateNumberField('unitsToSwap', unitsToSwap, { min: 0, required: false }),
+        validateNumberField('maxRadiusKm', maxRadiusKm, { min: 0.1, max: 50, required: false }),
+      ].filter(Boolean);
+
+      if (validationErrors.length > 0) {
+        return sendJson(res, 400, {
+          error: 'Invalid swap match input',
+          message:
+            'Donor coordinates must fall in valid lat/lng ranges, counters must be >= 0, and search radius must be within [0.1, 50] km.',
+          errors: validationErrors,
+        });
+      }
+
       let candidates: OutletCandidate[] = [];
 
       if (territoryData?.outlets) {
@@ -482,7 +503,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.log(`  Health Check: http://localhost:${DEFAULT_PORT}/health`);
     console.log(`  Outlets:      http://localhost:${DEFAULT_PORT}/api/outlets`);
     console.log(`  Leaderboard:  http://localhost:${DEFAULT_PORT}/api/leaderboard`);
-  console.log(`  NFI Evaluate: POST http://localhost:${DEFAULT_PORT}/api/fso/evaluate`);
+    console.log(`  NFI Evaluate: POST http://localhost:${DEFAULT_PORT}/api/fso/evaluate`);
     console.log(`================================================================`);
   });
 }

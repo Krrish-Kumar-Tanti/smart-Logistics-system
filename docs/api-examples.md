@@ -117,6 +117,14 @@ curl -s -X POST http://localhost:4000/api/swaps/match \
   }' | jq '.bestMatch, .matchedRecipientCount'
 ```
 
+A 400 example for validation (donor coordinates must fall in valid lat/lng ranges, counters `>= 0`, and radius within `[0.1, 50]` km):
+
+```bash
+curl -s -X POST http://localhost:4000/api/swaps/match \
+  -H "Content-Type: application/json" \
+  -d '{ "donorStoreCode": "GT-001", "donorLat": 95, "maxRadiusKm": 0 }' | jq
+```
+
 ---
 
 ## 7 · FSO Leaderboard (Net Freshness Index)

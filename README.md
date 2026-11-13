@@ -499,7 +499,7 @@ smart-Logistics-system/
 ## 17 · Running the Project
 
 ```bash
-# 1. Run all unit tests across risk-engine and API services (27 tests)
+# 1. Run all unit tests across risk-engine and API services (29 tests)
 npm test
 
 # 2. Run synthetic territory simulation (generates 40 Mumbai stores, 400 batches)
