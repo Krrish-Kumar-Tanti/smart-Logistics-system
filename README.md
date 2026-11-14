@@ -8,7 +8,7 @@ Entry for **L'Oréal Sustainability Challenge (L'Oréal SUS) 2026** — Executiv
 
 [![Track](https://img.shields.io/badge/Track-Sales%20%26%20Commercial-000000)]()
 [![Approach](https://img.shields.io/badge/Approach-Tech--First%20Mobile%20App-C9A227)]()
-[![Tests](https://img.shields.io/badge/Tests-27%20Passed-brightgreen)]()
+[![Tests](https://img.shields.io/badge/Tests-29%20Passed-brightgreen)]()
 [![Presentation](https://img.shields.io/badge/Executive%20Deck-5%20Slides%20(HTML%20%2B%20PDF)-purple)](presentation/)
 [![Status](https://img.shields.io/badge/Status-Phase%201%20API%20%2B%20Risk%20Engine%20%2B%20Simulation-blue)]()
 
