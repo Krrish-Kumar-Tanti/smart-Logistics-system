@@ -164,8 +164,8 @@ curl -s -X POST http://localhost:4000/api/fso/evaluate \
 
 ## Verify
 
-Run the full test suite (mirrors the GitHub Actions CI workflow):
+Run the full test suite from the repo root — that is what the GitHub Actions CI workflow runs too, covering both the API and risk-engine suites:
 
 ```bash
-cd services/api && npm test
+npm install && npm test
 ```
